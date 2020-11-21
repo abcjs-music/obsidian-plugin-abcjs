@@ -8,7 +8,7 @@ export default class MusicPlugin extends Plugin {
 		const blockToReplace = el.querySelector('pre')
 		if (!blockToReplace) return
 
-		const musicBlock = blockToReplace.querySelector('code.language-abc')
+		const musicBlock = blockToReplace.querySelector('code.language-music-abc')
 		if (!musicBlock) return
 
 		const source = musicBlock.textContent

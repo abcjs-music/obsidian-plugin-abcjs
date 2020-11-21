@@ -1,7 +1,7 @@
 {
 	"id": "obsidian-plugin-abcjs",
 	"name": "Music notation",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"minAppVersion": "0.9.15",
 	"description": "Plugin which renders music notation from code blocks. Uses the `abc` language.",
 	"author": "Til Blechschmidt",

@@ -1,12 +1,12 @@
 # Obsidian ABC.JS plugin
 
-This plugin renders music sheets from code blocks using the `abc` language. Under the hood it uses [abc.js](https://paulrosen.github.io/abcjs/) and supports everything the library does.
+This plugin renders music sheets from code blocks using the `music-abc` language. Under the hood it uses [abc.js](https://paulrosen.github.io/abcjs/) and supports everything the library does.
 
 ## Examples
 
 ### Simple song
 
-    ```abc
+    ```music-abc
     X:1
     T:The Legacy Jig
     M:6/8
@@ -21,7 +21,7 @@ This plugin renders music sheets from code blocks using the `abc` language. Unde
 
 ### Chorus music
 
-    ```abc
+    ```music-abc
     X: 1
     T: Chorus
     V: T1 clef=treble name="Soprano"

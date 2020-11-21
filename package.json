@@ -1,6 +1,6 @@
 {
-  "name": "obsidian-sample-plugin",
-  "version": "0.9.7",
+  "name": "obsidian-plugin-abcjs",
+  "version": "1.0.1",
   "description": "Plugin which renders music notation from code blocks. Uses the `abc` language.",
   "main": "main.js",
   "scripts": {
