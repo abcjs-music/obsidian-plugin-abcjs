@@ -1,7 +1,7 @@
 {
-  "name": "obsidian-plugin-abcjs",
-  "version": "1.0.1",
-  "description": "Plugin which renders music notation from code blocks. Uses the `abc` language.",
+  "name": "obsidian-plugin-music-code-blocks",
+  "version": "1.0.2",
+  "description": "Plugin which renders music notation from code blocks. Uses the `music-abc` language.",
   "main": "main.js",
   "scripts": {
     "dev": "rollup --config rollup.config.js -w",
