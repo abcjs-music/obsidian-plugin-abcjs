@@ -1,1 +1,9 @@
-/* Nothing to do here really, default abcjs styles look good */
+/* Default abcjs styles look good. Just adapting it to the current theme.  */
+
+.abcjs-container svg path {
+  fill: var(--text-normal);
+}
+
+.abcjs-container svg text {
+  fill: var(--text-normal);
+}
