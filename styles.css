@@ -7,3 +7,7 @@
 .abcjs-container svg text {
   fill: var(--text-normal);
 }
+
+.abcjs-brace {
+  stroke: var(--text-normal);
+}
