@@ -1,7 +1,7 @@
 {
 	"id": "music-code-blocks",
 	"name": "Music notation",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"minAppVersion": "0.9.15",
 	"description": "Plugin which renders music notation from code blocks. Uses the `music-abc` language.",
 	"author": "Til Blechschmidt",

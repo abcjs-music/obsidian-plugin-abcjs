@@ -6,6 +6,8 @@ This plugin renders music sheets from code blocks using the `music-abc` language
 
 ### Simple song
 
+    ![Example music sheet](example.png)
+
     ```music-abc
     X:1
     T:The Legacy Jig
@@ -36,3 +38,7 @@ This plugin renders music sheets from code blocks using the `music-abc` language
     [V: B1]C3D- DF,3 |
     [V: B2]C,2A,,2 F,,2G,,2 |
     ```
+
+## Maintenance & Contributions
+
+At the moment, I am not actively using Obsidian and thus do not invest much time into this plugin. However, it does work regardless and if have feedback do feel free to open an issues. Be aware though that I might not have the time available to invest into solving your particular request on short notice. If you know your way around code, please consider contributing a pull request! I will gladly review and merge it.
