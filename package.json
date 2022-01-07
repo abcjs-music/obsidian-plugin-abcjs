@@ -1,6 +1,6 @@
 {
   "name": "obsidian-plugin-music-code-blocks",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Plugin which renders music notation from code blocks. Uses the `music-abc` language.",
   "main": "main.js",
   "scripts": {
