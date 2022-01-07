@@ -3,22 +3,27 @@ import { signature, renderAbc } from 'abcjs';
 
 export default class MusicPlugin extends Plugin {
 	static postprocessor: MarkdownPostProcessor = (el: HTMLElement, ctx: MarkdownPostProcessorContext) => {
-		// Assumption: One section always contains only the code block
+		// Assumption: One <pre> section always contains only the code block
 
-		const blockToReplace = el.querySelector('pre')
-		if (!blockToReplace) return
+		const blocksToReplace = el.querySelectorAll('pre')
+		if (blocksToReplace.length < 1) return
 
-		const musicBlock = blockToReplace.querySelector('code.language-music-abc')
-		if (!musicBlock) return
-
-		const source = musicBlock.textContent
-		const destination = document.createElement('div')
-		renderAbc(destination, source, {
-			add_classes: true,
-			responsive: 'resize'
-		})
-
-		el.replaceChild(destination, blockToReplace)
+		// Generally, blocksToReplace will be length 1 (called for every single block of code/text)
+		// On print to PDF, the entire document is passed to this function at once
+		// This for loop handles both cases - regular render and print-to-PDF
+		for (var i = 0; i < blocksToReplace.length; i++) {
+			const musicBlock = blocksToReplace[i].querySelector('code.language-music-abc')
+			if (!musicBlock) continue
+	
+			const source = musicBlock.textContent
+			const destination = document.createElement('div')
+			renderAbc(destination, source, {
+				add_classes: true,
+				responsive: 'resize'
+			})
+	
+			el.replaceChild(destination, blocksToReplace[i])
+		}
 	}
 
 	onload() {
