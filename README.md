@@ -6,7 +6,7 @@ This plugin renders music sheets from code blocks using the `music-abc` language
 
 ### Simple song
 
-    ![Example music sheet](example.png)
+![Example music sheet](example.png)
 
     ```music-abc
     X:1
