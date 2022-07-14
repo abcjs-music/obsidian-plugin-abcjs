@@ -62,6 +62,8 @@ You can pass custom options to the `renderAbc` function by adding a JSON string 
 
 When the JSON is invalid, the plugin will still try to render the music block but shows a big red banner at the top with the error so you can't miss it.
 
+For a full reference of all options you can use, have a look at the [official abcjs documentation](https://paulrosen.github.io/abcjs/visual/render-abc-options.html).
+
 ## Maintenance & Contributions
 
 At the moment, I am not actively using Obsidian and thus do not invest much time into this plugin. However, it does work regardless and if have feedback do feel free to open an issue. Be aware though that I might not have the time available to invest into solving your particular request on short notice. If you know your way around code, please consider contributing a pull request! I will gladly review and merge it.
