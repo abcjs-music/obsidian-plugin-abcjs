@@ -11,3 +11,14 @@
 .abcjs-brace {
   stroke: var(--text-normal);
 }
+
+.obsidian-plugin-abcjs-error {
+  background-color: #E74C3C;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 8px;
+  text-align: center
+}

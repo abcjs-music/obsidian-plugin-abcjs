@@ -1,7 +1,4 @@
-type Params = {
-    add_classes: boolean,
-    responsive: 'resize' | undefined
-}
+type Params = Object;
 
 declare module 'abcjs' {
     const signature: string

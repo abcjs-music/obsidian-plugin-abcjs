@@ -39,6 +39,29 @@ This plugin renders music sheets from code blocks using the `music-abc` language
     [V: B2]C,2A,,2 F,,2G,,2 |
     ```
 
+### Custom options
+
+You can pass custom options to the `renderAbc` function by adding a JSON string at the top of the code block followed by `---`. Note that there may not be any whitespaces before or after the JSON.
+
+    ```music-abc
+    {
+      "paddingtop": 80
+    }
+    ---
+    X:1
+    T:The Legacy Jig
+    M:6/8
+    L:1/8
+    R:jig
+    K:G
+    GFG BAB | gfg gab | GFG BAB | d2A AFD |
+    GFG BAB | gfg gab | age edB |1 dBA AFD :|2 dBA ABd |:
+    efe edB | dBA ABd | efe edB | gdB ABd |
+    efe edB | d2d def | gfe edB |1 dBA ABd :|2 dBA AFD |]
+    ```
+
+When the JSON is invalid, the plugin will still try to render the music block but shows a big red banner at the top with the error so you can't miss it.
+
 ## Maintenance & Contributions
 
 At the moment, I am not actively using Obsidian and thus do not invest much time into this plugin. However, it does work regardless and if have feedback do feel free to open an issue. Be aware though that I might not have the time available to invest into solving your particular request on short notice. If you know your way around code, please consider contributing a pull request! I will gladly review and merge it.
