@@ -115,28 +115,10 @@
   dependencies:
     "@types/estree" "*"
 
-abcjs@5.10.3:
-  version "5.10.3"
-  resolved "https://registry.yarnpkg.com/abcjs/-/abcjs-5.10.3.tgz#294702140ec1caa292859ba9d2af0452f7e9e046"
-  integrity sha512-YGmW4CUWd7T2/HqZa/SQOTE+lXg7Z68HwwpJhHJBvdHqLi1uLCiYva1ZRGhB/MPyl1QKqJMfF+LQ1jGAEK69XQ==
-  dependencies:
-    midi "https://github.com/paulrosen/MIDI.js.git#abcjs"
-
-abcjs@5.11.0:
-  version "5.11.0"
-  resolved "https://registry.yarnpkg.com/abcjs/-/abcjs-5.11.0.tgz#397592ea6a56948aee64a8364f9a7a589e254300"
-  integrity sha512-kLehHwwttcTCVhKQaDkmqYbWBLAWmfyzYSbUQoEDAOTOX5RzDGakX8tXpzlsNHw6Lh8W8odZw44e0siwbG4TKA==
-  dependencies:
-    abcjs "5.10.3"
-    midi "https://github.com/paulrosen/MIDI.js.git#abcjs"
-
-abcjs@^5.12.0:
-  version "5.12.0"
-  resolved "https://registry.yarnpkg.com/abcjs/-/abcjs-5.12.0.tgz#06fec076d570821309b0a12598cd356cd589eb08"
-  integrity sha512-pvi7SjOAKT7cRyRtywUSwYB0SNtRHKLxZUZ9Oc4E+nvpBHr8Z2/M9Pfyv3oIaiEpxlWTFK+B/H5t/DckiNFgpg==
-  dependencies:
-    abcjs "5.11.0"
-    midi "https://github.com/paulrosen/MIDI.js.git#abcjs"
+abcjs@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/abcjs/-/abcjs-6.0.3.tgz#e0f3b46cec82fc25243773c2b32d518517cfb1d0"
+  integrity sha512-GtJ8NU7z5W+jDJ7/TrGemHelr7uYi1LdZi1rnDcbRPPnmf2REgoNb3f3uWo72+jx3LZYIv8443vpFQUf+g9BGA==
 
 balanced-match@^1.0.0:
   version "1.0.2"
@@ -253,10 +235,6 @@ magic-string@^0.25.7:
   integrity sha512-4CrMT5DOHTDk4HYDlzmwu4FVCcIYI8gauveasrdCu2IKIFOJ3f0v/8MDGJCDL9oD2ppz/Av1b0Nj345H9M+XIA==
   dependencies:
     sourcemap-codec "^1.4.4"
-
-"midi@https://github.com/paulrosen/MIDI.js.git#abcjs":
-  version "0.4.2"
-  resolved "https://github.com/paulrosen/MIDI.js.git#e593ffef81a0350f99448e3ab8111957145ff6b2"
 
 minimatch@^3.0.4:
   version "3.0.4"

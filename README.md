@@ -43,21 +43,20 @@ This plugin renders music sheets from code blocks using the `music-abc` language
 
 You can pass custom options to the `renderAbc` function by adding a JSON string at the top of the code block followed by `---`. Note that there may not be any whitespaces before or after the JSON.
 
+![Custom options example music sheet with tablatures](example_tablatures.png)
+
     ```music-abc
     {
-      "paddingtop": 80
+      "tablature": [{"instrument": "violin"}]
     }
     ---
     X:1
-    T:The Legacy Jig
-    M:6/8
-    L:1/8
-    R:jig
-    K:G
-    GFG BAB | gfg gab | GFG BAB | d2A AFD |
-    GFG BAB | gfg gab | age edB |1 dBA AFD :|2 dBA ABd |:
-    efe edB | dBA ABd | efe edB | gdB ABd |
-    efe edB | d2d def | gfe edB |1 dBA ABd :|2 dBA AFD |]
+    T: Cooley's
+    M: 4/4
+    L: 1/8
+    R: reel
+    K: G
+    |:D2|EB{c}BA B2 EB|~B2 AB dBAG|FDAD BDAD|FDAD dAFD|
     ```
 
 When the JSON is invalid, the plugin will still try to render the music block but shows a big red banner at the top with the error so you can't miss it.
