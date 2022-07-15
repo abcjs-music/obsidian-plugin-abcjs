@@ -43,7 +43,7 @@ This plugin renders music sheets from code blocks using the `music-abc` language
 
 You can pass custom options to the `renderAbc` function by adding a JSON string at the top of the code block followed by `---`. Note that there may not be any whitespaces before or after the JSON.
 
-![Custom options example music sheet with tablatures](example_tablatures.png)
+![Custom options example music sheet with tablatures](example_tablatures.jpg)
 
     ```music-abc
     {
