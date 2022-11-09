@@ -1,10 +1,10 @@
 {
 	"id": "music-code-blocks",
-	"name": "Music notation",
-	"version": "1.0.7",
+	"name": "ABC Music Notation",
+	"version": "1.1.0",
 	"minAppVersion": "0.9.15",
-	"description": "Plugin which renders music notation from code blocks. Uses the `music-abc` language.",
+	"description": "The plugin which renders ABC music notation from code blocks using the `music-abc` as the language spec.",
 	"author": "Til Blechschmidt",
-	"authorUrl": "https://github.com/TilBlechschmidt/obsidian-plugin-abcjs",
+	"authorUrl": "https://github.com/abcjs-music/obsidian-plugin-abcjs",
 	"isDesktopOnly": false
 }
