@@ -1,6 +1,8 @@
 # Obsidian ABC.JS plugin
 
-This plugin renders music sheets from code blocks using the `music-abc` language. Under the hood it uses [abc.js](https://paulrosen.github.io/abcjs/) and supports everything the library does.
+This plugin renders music sheets from code blocks using the `music-abc` as the language spec. 
+Under the hood it uses [abcjs](https://paulrosen.github.io/abcjs/) library and supports 
+all the features abcjs does.
 
 ## Examples
 
@@ -65,4 +67,11 @@ For a full reference of all options you can use, have a look at the [official ab
 
 ## Maintenance & Contributions
 
-At the moment, I am not actively using Obsidian and thus do not invest much time into this plugin. However, it does work regardless and if have feedback do feel free to open an issue. Be aware though that I might not have the time available to invest into solving your particular request on short notice. If you know your way around code, please consider contributing a pull request! I will gladly review and merge it.
+The plugin is maintained by the [abcjs-music](https://github.com/abcjs-music) organization of 
+volunteers, including Til Blechschmidt, the original author.
+If you have any feedback, please feel free to open an issue. If you know your way around source code, please consider making a pull request! All contributions are welcome.
+
+# Development
+
+Clone the repository, run `npm i` to install all the dependencies.
+`npm run build`, then copy main.js, manifest.json, and styles.css into your plugin directory (`.obsidian/plugins/<plugin-name>`)

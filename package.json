@@ -1,7 +1,7 @@
 {
   "name": "obsidian-plugin-music-code-blocks",
-  "version": "1.0.7",
-  "description": "Plugin which renders music notation from code blocks. Uses the `music-abc` language.",
+  "version": "1.1.0",
+  "description": "Plugin which renders ABC music notation from code blocks. Uses the `music-abc` as language spec.",
   "main": "main.js",
   "scripts": {
     "dev": "rollup --config rollup.config.js -w",
@@ -11,16 +11,16 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^15.1.0",
-    "@rollup/plugin-node-resolve": "^9.0.0",
-    "@rollup/plugin-typescript": "^6.0.0",
-    "@types/node": "^14.14.2",
+    "@rollup/plugin-commonjs": "15.1.0",
+    "@rollup/plugin-node-resolve": "9.0.0",
+    "@rollup/plugin-typescript": "9.0.2",
+    "@types/node": "18.11.9",
     "obsidian": "https://github.com/obsidianmd/obsidian-api/tarball/master",
-    "rollup": "^2.32.1",
-    "tslib": "^2.0.3",
-    "typescript": "^4.0.3"
+    "rollup": "2.79.1",
+    "tslib": "2.4.1",
+    "typescript": "4.8.4"
   },
   "dependencies": {
-    "abcjs": "^6.0.3"
+    "abcjs": "6.1.6"
   }
 }
