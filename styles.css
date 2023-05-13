@@ -22,3 +22,28 @@
   padding: 8px;
   text-align: center
 }
+
+/* ------------------------------------------------- Audio Playback styles */
+.abcjs-container {
+  cursor: pointer;
+}
+
+/* color the current notes */
+.abcjs-highlight path {
+  fill: var(--background-modifier-success) !important;
+}
+
+/* Highlight the region when audio is playing */
+.cm-embed-block.is-playing,
+.cm-embed-block.is-playing:focus-within {
+  box-shadow: 0 0 0 1px var(--background-modifier-success), inset 0 0 0 1px var(--background-modifier-success) !important;
+  border-radius: var(--radius-s);
+}
+/* .cm-embed-block:focus-within {
+  box-shadow: 0 0 0 1px var(--color-blue), inset 0 0 0 1px var(--color-blue) !important;
+  border-radius: var(--radius-s);
+} */
+
+.abcjs-css-warning {
+  display: none;
+}

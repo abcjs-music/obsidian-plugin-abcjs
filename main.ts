@@ -1,47 +1,24 @@
-import { App, MarkdownPostProcessor, MarkdownPostProcessorContext, MarkdownPreviewRenderer, 
-	MarkdownRenderer, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
-import { signature, renderAbc, AbcVisualParams } from 'abcjs';
-
-const optionsRegex = new RegExp(/(?<options>{.*})\n---\n(?<source>.*)/s);
-const defaultOptions: AbcVisualParams = {
-	add_classes: true,
-	responsive: 'resize'
-};
+import { MarkdownPostProcessorContext, Plugin } from 'obsidian';
+import { PLAYBACK_CONTROLS_ID } from './cfg';
+import { PlaybackElement } from './playback_element';
 
 export default class MusicPlugin extends Plugin {
 	onload() {
-		console.log('loading abcjs plugin');
-
 		this.registerMarkdownCodeBlockProcessor('abc', this.codeProcessor);
 		this.registerMarkdownCodeBlockProcessor('music-abc', this.codeProcessor);
+
+		// Although unused by us, a valid DOM element is needed to create a SynthController
+		const unusedPlaybackControls = document.createElement('aside');
+		unusedPlaybackControls.id = PLAYBACK_CONTROLS_ID;
+		unusedPlaybackControls.style.display = 'none';
+		document.body.appendChild(unusedPlaybackControls);
 	}
 
 	onunload() {
-		console.log('unloading abcjs plugin');
+		document.getElementById(PLAYBACK_CONTROLS_ID).remove();
 	}
 
-	async codeProcessor (source: string, el: HTMLElement, ctx: any) {
-		let userOptions = {};
-		let error = null;
-
-		const optionsMatch = source.match(optionsRegex);
-		if (optionsMatch !== null) {
-			source = optionsMatch.groups["source"];
-			try {
-				userOptions = JSON.parse(optionsMatch.groups["options"]);
-			} catch (e) {
-				console.error(e);
-				error = `<strong>Failed to parse user-options</strong>\n\t${e}`;
-			}
-		}
-
-		renderAbc(el, source, Object.assign(defaultOptions, userOptions));
-
-		if (error !== null) {
-			const errorNode = document.createElement('div');
-			errorNode.innerHTML = error;
-			errorNode.addClass("obsidian-plugin-abcjs-error");
-			el.appendChild(errorNode);
-		}
+	async codeProcessor(source: string, el: HTMLElement, ctx: MarkdownPostProcessorContext) {
+		ctx.addChild(new PlaybackElement(el, source));
 	}
 }
