@@ -103,10 +103,10 @@
   dependencies:
     "@types/estree" "*"
 
-abcjs@6.2.0:
-  version "6.2.0"
-  resolved "https://registry.npmjs.org/abcjs/-/abcjs-6.2.0.tgz"
-  integrity sha512-tt8jpWcJOGCspOpyRGmFkGkAK5MStGg6eGKzKKpz9mvMLWGuw0atbehBaJYaWi272vDx4TG2eoi7aCmz1/cdrw==
+abcjs@6.2.2:
+  version "6.2.2"
+  resolved "https://registry.npmjs.org/abcjs/-/abcjs-6.2.2.tgz"
+  integrity sha512-M5pvTb+0yABqScZBEN/bZmrMgX+iTtgD8vxAVTaKNNVt+ivyCzx0SLNYlTXYErlXu7QvPIoIiSPRojne6M24PA==
 
 balanced-match@^1.0.0:
   version "1.0.2"
@@ -144,9 +144,6 @@ estree-walker@^2.0.1, estree-walker@^2.0.2:
 
 fs.realpath@^1.0.0:
   version "1.0.0"
-
-fsevents@~2.3.2:
-  version "2.3.2"
 
 function-bind@^1.1.1:
   version "1.1.1"
