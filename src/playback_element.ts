@@ -1,18 +1,31 @@
-import { MidiBuffer, TuneObject, renderAbc, synth } from 'abcjs';
-import { MarkdownRenderChild } from 'obsidian';
-import { AUDIO_PARAMS, DEFAULT_OPTIONS, OPTIONS_REGEX, PLAYBACK_CONTROLS_ID, SYNTH_INIT_OPTIONS } from './cfg';
-import { NoteHighlighter, togglePlayingHighlight } from './note_highlighter';
+import {
+  MidiBuffer,
+  SynthObjectController,
+  TuneObject,
+  renderAbc,
+  synth,
+} from "abcjs";
+import { MarkdownRenderChild } from "obsidian";
+import {
+  AUDIO_PARAMS,
+  DEFAULT_OPTIONS,
+  OPTIONS_REGEX,
+  PLAYBACK_CONTROLS_ID,
+  SYNTH_INIT_OPTIONS,
+} from "./config";
+import { NoteHighlighter, outlineRegion } from "./note_highlighter";
 
 /**
  * This class abstraction is needed to support load/unload hooks
- * 
+ *
  * "If your post processor requires lifecycle management, for example, to clear an interval, kill a subprocess, etc when this element is removed from the app..."
  * https://marcus.se.net/obsidian-plugin-docs/reference/typescript/interfaces/MarkdownPostProcessorContext#addchild
  */
 export class PlaybackElement extends MarkdownRenderChild {
   private readonly abortController = new AbortController();
   private readonly midiBuffer: MidiBuffer = new synth.CreateSynth();
-  private readonly synthCtrl = new synth.SynthController();
+  private readonly synthCtrl: SynthObjectController =
+    new synth.SynthController();
 
   constructor(
     private readonly el: HTMLElement,
@@ -22,18 +35,24 @@ export class PlaybackElement extends MarkdownRenderChild {
   }
 
   onload() {
-    const { userOptions, source } = this.parseOptionsAndSource();
-    const renderResp = renderAbc(this.el, source, Object.assign(DEFAULT_OPTIONS, userOptions));
-    this.enableAudioPlayback(renderResp[0]);
+    const { parsedOptions, source } = this.parseOptionsAndSource(
+      this.markdownSource,
+    );
+    const renderResp = renderAbc(
+      this.el,
+      source,
+      Object.assign(DEFAULT_OPTIONS, parsedOptions),
+    )[0];
+    this.enableAudioPlayback(renderResp);
   }
 
   /**
    * Stop the music and clean things up.
-   * 
+   *
    * (Tested) Called when:
    * 1. Cursor focus goes into the text area (which switches from preview to edit mode)
    * 2. A tab containing this is closed (very important)
-   * 
+   *
    * Not called when:
    * 1. Switching tabs to a different one (audio keeps playing)
    */
@@ -46,28 +65,34 @@ export class PlaybackElement extends MarkdownRenderChild {
     this.midiBuffer.stop(); // doesn't stop the music by itself?
   }
 
-  parseOptionsAndSource(): { userOptions: {}, source: string } {
-    let userOptions = {};
-
-    const optionsMatch = this.markdownSource.match(OPTIONS_REGEX);
-    let source = this.markdownSource; // can be modified, removes the options portion.
-    if (optionsMatch !== null) {
-      source = optionsMatch.groups["source"];
-      try {
-        userOptions = JSON.parse(optionsMatch.groups["options"]);
-      } catch (e) {
-        console.error(e);
-        this.renderError(`<strong>Failed to parse user-options</strong>\n\t${e}`);
-      }
-    }
-
-    return { userOptions, source };
+  parseOptionsAndSource(markdownSource: string): {
+    parsedOptions: {};
+    source: string;
+  } {
+    const optionsMatch = markdownSource.match(OPTIONS_REGEX);
+    return optionsMatch?.groups
+      ? {
+          parsedOptions: this.parseUserOptions(optionsMatch.groups["options"]),
+          source: optionsMatch.groups["source"],
+        }
+      : { parsedOptions: {}, source: markdownSource };
   }
 
-  renderError(error?: string) {
-    if (error == null) return;
-    const errorNode = document.createElement('div');
-    errorNode.innerHTML = error;
+  parseUserOptions(options: string): any {
+    try {
+      return JSON.parse(options);
+    } catch (e: unknown) {
+      this.renderError(
+        `Failed to parse user-options: ${e instanceof Error ? e.message : JSON.stringify(e)}`,
+      );
+      return {};
+    }
+  }
+
+  renderError(msg: string): void {
+    console.error(msg);
+    const errorNode = document.createElement("div");
+    errorNode.innerHTML = msg;
     errorNode.addClass("obsidian-plugin-abcjs-error");
     this.el.appendChild(errorNode);
   }
@@ -83,26 +108,20 @@ export class PlaybackElement extends MarkdownRenderChild {
       new NoteHighlighter(this.el), // an implementation of a `CursorControl`
     );
 
-    this.midiBuffer.init({ visualObj, options: SYNTH_INIT_OPTIONS })
+    this.midiBuffer
+      .init({ visualObj, options: SYNTH_INIT_OPTIONS })
       .then(() => this.synthCtrl.setTune(visualObj, false, AUDIO_PARAMS))
       .catch(console.warn.bind(console));
 
     const signal = this.abortController.signal; // for event cleanup
-    this.el.addEventListener('click', this.togglePlayback, { signal });
-    this.el.addEventListener('dblclick', this.restartPlayback, { signal });
+    this.el.addEventListener("click", this.togglePlayback, { signal });
+    this.el.addEventListener("dblclick", this.synthCtrl.restart, { signal });
   }
 
-  private readonly togglePlayback = () => {
+  private togglePlayback(): void {
     // private access. Can improve when https://github.com/paulrosen/abcjs/pull/917 merges
     const isPlaying = (this.midiBuffer as any)?.isRunning;
     isPlaying ? this.synthCtrl.pause() : this.synthCtrl.play();
-    togglePlayingHighlight(this.el)(isPlaying);
-  };
-
-  // start again at the begining of the tune
-  private readonly restartPlayback = () => {
-    this.synthCtrl.restart();
-  };
+    outlineRegion(this.el, isPlaying);
+  }
 }
-
-

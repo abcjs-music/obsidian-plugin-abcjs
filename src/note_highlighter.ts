@@ -10,37 +10,39 @@ import { CursorControl, NoteTimingEvent } from 'abcjs';
  * https://paulrosen.github.io/abcjs/audio/synthesized-sound.html#cursorcontrol-object
  */
 export class NoteHighlighter implements CursorControl {
-  beatSubdivisions = 2;
-
   constructor(private readonly el: HTMLElement) { }
 
-  onStart = () => togglePlayingHighlight(this.el)(true);
-  onFinished = () => rmAllHighlights(this.el)();
+  beatSubdivisions = 2;
+  onStart = () => outlineRegion(this.el, true);
+  onFinished = () => {
+    outlineRegion(this.el, false)
+    clearNoteHighlights(this.el)
+  }
 
   // On every note event, clear highlights and redraw with current note highlighted.
   onEvent(event: NoteTimingEvent) {
     // this was the second part of a tie across a measure line. Just ignore it.
     if (event.measureStart && event.left === null) return;
     // Select the currently selected notes.
-    rmNoteHighlights(this.el)();
-    event.elements.flat().forEach(el => el.classList.add("abcjs-highlight"));
+    clearNoteHighlights(this.el);
+    event.elements?.flat().forEach((el: HTMLElement) => redrawCurrentNote(el, 'highlighted'))
+  }
+}
+export function redrawCurrentNote(el: Element, highlighted: 'highlighted' | 'clear'): void {
+  switch (highlighted) {
+    case 'highlighted':
+      el.classList.add("abcjs-highlight")
+    case 'clear':
+      el.classList.remove("abcjs-highlight")
   }
 }
 
+export function outlineRegion(el: HTMLElement, isPlaying: boolean): boolean {
+  return el.parentElement?.classList.toggle('is-playing', isPlaying) ?? false
+}
 
-
-// -------------------------------------------------------------- 2nd order fn library: Visualization
-// outline region when playing
-export const togglePlayingHighlight = (el: HTMLElement) => (is: boolean) => el.parentElement.classList.toggle('is-playing', is);
-
-// clear all the note highlights
-export const rmNoteHighlights = (parentEl: HTMLElement) => () => {
-  const selected = Array.from(parentEl.querySelectorAll(".abcjs-highlight"));
-  selected.forEach(el => el.classList.remove("abcjs-highlight"));
-};
-
-// remove both playing and note highlights
-export const rmAllHighlights = (parentEl: HTMLElement) => () => {
-  togglePlayingHighlight(parentEl)(false);
-  rmNoteHighlights(parentEl)();
+export function clearNoteHighlights(parent: HTMLElement): void {
+  Array
+    .from(parent.querySelectorAll(".abcjs-highlight"))
+    .forEach((el: Element) => redrawCurrentNote(el, 'clear'))
 }
