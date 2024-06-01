@@ -8,7 +8,7 @@ Under the hood it uses [abcjs](https://paulrosen.github.io/abcjs/) library and s
 
 ### Simple song
 
-![Example music sheet](example.png)
+![Example music sheet](.README/example.png)
 
     ```music-abc
     X:1
@@ -45,7 +45,7 @@ Under the hood it uses [abcjs](https://paulrosen.github.io/abcjs/) library and s
 
 You can pass custom options to the `renderAbc` function by adding a JSON string at the top of the code block followed by `---`. Note that there may not be any whitespaces before or after the JSON.
 
-![Custom options example music sheet with tablatures](example_tablatures.jpg)
+![Custom options example music sheet with tablatures](.README/example_tablatures.jpg)
 
     ```music-abc
     {
@@ -67,7 +67,7 @@ For a full reference of all options you can use, have a look at the [official ab
 
 ## Maintenance & Contributions
 
-The plugin is maintained by the [abcjs-music](https://github.com/abcjs-music) organization of 
+The plugin is maintained by the [abcjs-music](https://github.com/abcjs-music) organization of
 volunteers, including Til Blechschmidt, the original author.
 If you have any feedback, please feel free to open an issue. If you know your way around source code, please consider making a pull request! All contributions are welcome.
 

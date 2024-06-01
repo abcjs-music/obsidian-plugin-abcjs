@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "src",
     "inlineSourceMap": true,
     "inlineSources": true,
     "module": "ESNext",
@@ -9,18 +9,9 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "lib": [
-      "dom",
-      "es5",
-      "scripthost",
-      "es2015"
-    ],
-    "typeRoots": [
-      "node_modules/@types",
-      "typeDefs"
-    ]
+    "lib": ["dom", "es5", "scripthost", "es2015"],
+    "typeRoots": ["node_modules/@types", "src/types/"]
   },
-  "include": [
-    "**/*.ts"
-  ]
+  "include": ["src/**/*.ts"]
 }
+

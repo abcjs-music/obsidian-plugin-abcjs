@@ -2,7 +2,7 @@
   "name": "obsidian-plugin-music-code-blocks",
   "version": "1.4.0",
   "description": "Obsidian plugin which renders ABC music notation from code blocks using the `abc` language specifier.",
-  "main": "main.js",
+  "main": "build/main.js",
   "scripts": {
     "dev": "rollup --config rollup.config.js -w",
     "build": "rollup --config rollup.config.js"
