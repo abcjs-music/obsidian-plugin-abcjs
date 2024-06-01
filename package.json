@@ -4,20 +4,24 @@
   "description": "Obsidian plugin which renders ABC music notation from code blocks using the `abc` language specifier.",
   "main": "build/main.js",
   "scripts": {
-    "dev": "npm run build -- --watch",
-    "build": "rollup --config rollup.config.js"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier src --check",
+    "format:fix": "prettier src --write",
+    "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production"
   },
   "type": "module",
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^25.0.8",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-typescript": "^11.1.6",
-    "obsidian": "https://github.com/obsidianmd/obsidian-api/tarball/master",
-    "rollup": "^4.18.0",
-    "rollup-plugin-copy": "^3.5.0",
+    "@typescript-eslint/eslint-plugin": "^7.11.0",
+    "@typescript-eslint/parser": "^7.11.0",
+    "esbuild": "^0.21.4",
+    "esbuild-plugin-copy": "^2.1.1",
+    "eslint": "^8.57.0",
+    "obsidian": "1.5.7-1",
+    "prettier": "^3.2.5",
     "typescript": "^5.4.5"
   },
   "dependencies": {

@@ -13,14 +13,14 @@
 }
 
 .obsidian-plugin-abcjs-error {
-  background-color: #E74C3C;
+  background-color: #e74c3c;
   color: white;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   padding: 8px;
-  text-align: center
+  text-align: center;
 }
 
 /* ------------------------------------------------- Audio Playback styles */
@@ -36,7 +36,9 @@
 /* Highlight the region when audio is playing */
 .cm-embed-block.is-playing,
 .cm-embed-block.is-playing:focus-within {
-  box-shadow: 0 0 0 1px var(--background-modifier-success), inset 0 0 0 1px var(--background-modifier-success) !important;
+  box-shadow:
+    0 0 0 1px var(--background-modifier-success),
+    inset 0 0 0 1px var(--background-modifier-success) !important;
   border-radius: var(--radius-s);
 }
 /* .cm-embed-block:focus-within {
