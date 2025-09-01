@@ -67,11 +67,12 @@ For a full reference of all options you can use, have a look at the [official ab
 
 ## Maintenance & Contributions
 
-The plugin is maintained by the [abcjs-music](https://github.com/abcjs-music) organization of 
-volunteers, including Til Blechschmidt, the original author.
-If you have any feedback, please feel free to open an issue. If you know your way around source code, please consider making a pull request! All contributions are welcome.
+The plugin is maintained by the [abcjs-music](https://github.com/abcjs-music) organization of volunteers, including Til Blechschmidt, the original author.
+If you have any feedback, please feel free to open an issue. If you know your way around source code, please consider making a pull request. All contributions are welcome.
 
 # Development
 
-Clone the repository, run `npm i` to install all the dependencies.
-`npm run build`, then copy main.js, manifest.json, and styles.css into your plugin directory (`.obsidian/plugins/<plugin-name>`)
+- clone the repository
+- `npm i` to install all the dependencies
+- `npm run build` to compile
+- copy main.js, manifest.json, and styles.css into your plugin directory (`.obsidian/plugins/<plugin-name>`)

@@ -20,10 +20,10 @@
     "builtin-modules": "3.3.0",
     "esbuild": "0.17.3",
     "obsidian": "latest",
-    "tslib": "2.4.1",
+    "tslib": "2.8.1",
     "typescript": "4.8.4"
   },
   "dependencies": {
-    "abcjs": "6.4.4"
+    "abcjs": "6.5.2"
   }
 }
