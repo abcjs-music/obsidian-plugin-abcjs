@@ -23,8 +23,8 @@ export class PlaybackElement extends MarkdownRenderChild {
 
   onload() {
     const { userOptions, source } = this.parseOptionsAndSource();
-    const options = { ...DEFAULT_OPTIONS, ...userOptions }
-    const renderResp = renderAbc(this.el, source, options)    
+    const options = { ...DEFAULT_OPTIONS, ...userOptions };
+    const renderResp = renderAbc(this.el, source, options);
     this.enableAudioPlayback(renderResp[0]);
   }
 
