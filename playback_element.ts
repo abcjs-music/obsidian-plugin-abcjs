@@ -1,4 +1,4 @@
-import { MidiBuffer, TuneObject, renderAbc, synth } from 'abcjs';
+import { MidiBuffer, TuneObject, renderAbc, synth, SynthOptions } from 'abcjs';
 import { MarkdownRenderChild } from 'obsidian';
 import { AUDIO_PARAMS, DEFAULT_OPTIONS, OPTIONS_REGEX, PLAYBACK_CONTROLS_ID, SYNTH_INIT_OPTIONS } from './cfg';
 import { NoteHighlighter, togglePlayingHighlight } from './note_highlighter';
@@ -76,22 +76,39 @@ export class PlaybackElement extends MarkdownRenderChild {
   // Audio playback features
   // Many variants, options, and guidance here: https://paulrosen.github.io/abcjs/audio/synthesized-sound.html
   enableAudioPlayback(visualObj: TuneObject) {
-    if (!synth.supportsAudio()) return;
+  if (!synth.supportsAudio()) return;
 
-    // We need the SynthController to drive NoteHighlighter (CursorControl), even though we don't want the UI controls from SynthController
-    this.synthCtrl.load(
-      `#${PLAYBACK_CONTROLS_ID}`, //controlsEl, // can be an HTMLElement reference or css selector
-      new NoteHighlighter(this.el), // an implementation of a `CursorControl`
-    );
+  // Extract user options (already done in onload via parseOptionsAndSource)
+  const { userOptions } = this.parseOptionsAndSource();
 
-    this.midiBuffer.init({ visualObj, options: SYNTH_INIT_OPTIONS })
-      .then(() => this.synthCtrl.setTune(visualObj, false, AUDIO_PARAMS))
-      .catch(console.warn.bind(console));
+  // Separate visual vs audio options? (Optional)
+  // For now, assume any unknown options are for audio/synth
+  const audioParamsFromUser: Partial<SynthOptions> = {};
+  const knownAudioKeys = ['swing', 'chordsOff']; // add others as needed
 
-    const signal = this.abortController.signal; // for event cleanup
-    this.el.addEventListener('click', this.togglePlayback, { signal });
-    this.el.addEventListener('dblclick', this.restartPlayback, { signal });
+  for (const key of knownAudioKeys) {
+    if (userOptions.hasOwnProperty(key)) {
+      audioParamsFromUser[key] = userOptions[key];
+    }
   }
+
+  // Merge: defaults (from cfg) <- user overrides
+  const finalAudioParams: SynthOptions = { ...AUDIO_PARAMS, ...audioParamsFromUser };
+
+  // We need the SynthController to drive NoteHighlighter (CursorControl)
+  this.synthCtrl.load(
+    `#${PLAYBACK_CONTROLS_ID}`,
+    new NoteHighlighter(this.el),
+  );
+
+  this.midiBuffer.init({ visualObj, options: SYNTH_INIT_OPTIONS })
+    .then(() => this.synthCtrl.setTune(visualObj, false, finalAudioParams))
+    .catch(console.warn.bind(console));
+
+  const signal = this.abortController.signal;
+  this.el.addEventListener('click', this.togglePlayback, { signal });
+  this.el.addEventListener('dblclick', this.restartPlayback, { signal });
+}
 
   private readonly togglePlayback = () => {
     // private access. Can improve when https://github.com/paulrosen/abcjs/pull/917 merges

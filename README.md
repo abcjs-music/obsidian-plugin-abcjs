@@ -60,7 +60,30 @@ You can pass custom options to the `renderAbc` function by adding a JSON string 
     K: G
     |:D2|EB{c}BA B2 EB|~B2 AB dBAG|FDAD BDAD|FDAD dAFD|
     ```
+### Add Swing to your 4/4 Tunes
 
+```music-abc
+{"swing": 70}
+---
+X:1
+T:It Don't Mean A Thing
+M:4/4 
+L:1/8 
+K:_B
+V:Guitar clef=treble 
+V:Bass clef=bass 
+V:Drums clef=perc
+[V:Guitar] 
+%%MIDI program 24
+G2 z2 G2 _B2|d2 z2 z2 z2| _d_d z2 c2 _b,2| G4 z4 |G2 z2 G2 _B2|d2 z2 z2 z2| _d_d _d_d c2 _b,2| G4 z4 | G,_B, d,g, _g,_b, dg|f_b d'g' e'2 z2 z_d|c_d c_d c_B | E2 z4|
+[V:Bass] 
+%%MIDI program 32
+G,,4 _G,,4|F,,4 E,,4|_E,,4 D,,4|G,,4 z4 |G,,4 _G,,2 zE,,|F,,4 E,,4|_E,,4 D,,4|G,,4 z4 |G,,4 _G,,4|F,,4 E,,4|_E,,4 D,,4|:G,,2 _G,,2 F,,2 E,,F,, |_G,,2 F,,2 E,,2 D,,2|_E,,2 _E,2 ^F,,2 A,,,^F,,|G,,4 z4:|
+[V:Drums] 
+%%MIDI channel 10
+B,,2 B,,B,, B,,2 B,,B,,|B,,2 B,,B,, B,,2 B,,B,,|B,,2 B,,B,, B,,2 B,,B,,|B,,2 B,,B,, B,,2 B,,B,,|B,,2 B,,B,, B,,2 B,,B,,|B,,2 B,,B,, B,,2 B,,B,,|B,,2 B,,B,, B,,2 B,,B,,|^D,^D,^D,^D,^D,^D,^D,^D,:| ^D,2  ^D,^D,  ^D,2  ^D,^D,| ^D,4
+```
+   
 When the JSON is invalid, the plugin will still try to render the music block but shows a big red banner at the top with the error so you can't miss it.
 
 For a full reference of all options you can use, have a look at the [official abcjs documentation](https://paulrosen.github.io/abcjs/visual/render-abc-options.html).
