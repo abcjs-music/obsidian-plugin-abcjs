@@ -47,8 +47,8 @@ export class PlaybackElement extends MarkdownRenderChild {
     this.midiBuffer.stop(); // doesn't stop the music by itself?
   }
 
-  parseOptionsAndSource(): { userOptions: {}, source: string } {
-    let userOptions = {};
+  parseOptionsAndSource(): { userOptions: Record<string, any>, source: string } {
+    let userOptions: Record<string, any> = {};
 
     const optionsMatch = this.markdownSource.match(OPTIONS_REGEX);
     let source = this.markdownSource; // can be modified, removes the options portion.
@@ -58,7 +58,8 @@ export class PlaybackElement extends MarkdownRenderChild {
         userOptions = JSON.parse(optionsMatch.groups["options"]);
       } catch (e) {
         console.error(e);
-        this.renderError(`<strong>Failed to parse user-options</strong>\n\t${e}`);
+        this.renderError(`<strong>Failed to parse user-options</strong>
+	${e}`);
       }
     }
 
@@ -83,7 +84,7 @@ export class PlaybackElement extends MarkdownRenderChild {
 
   // Separate visual vs audio options? (Optional)
   // For now, assume any unknown options are for audio/synth
-  const audioParamsFromUser: Partial<SynthOptions> = {};
+  const audioParamsFromUser: Record<string, any> = {};
   const knownAudioKeys = ['swing', 'chordsOff']; // add others as needed
 
   for (const key of knownAudioKeys) {
@@ -122,5 +123,3 @@ export class PlaybackElement extends MarkdownRenderChild {
     this.synthCtrl.restart();
   };
 }
-
-
