@@ -99,3 +99,7 @@ If you have any feedback, please feel free to open an issue. If you know your wa
 - `npm i` to install all the dependencies
 - `npm run build` to compile
 - copy main.js, manifest.json, and styles.css into your plugin directory (`.obsidian/plugins/<plugin-name>`)
+
+# License
+
+Copyright (C) 2025  ABCJS Organization <https://github.com/abcjs-music>
