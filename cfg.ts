@@ -1,7 +1,6 @@
 import { AbcVisualParams, SynthOptions } from 'abcjs';
 
 
-
 export const PLAYBACK_CONTROLS_ID = 'abcjs-playback-controls-unused';
 
 export const OPTIONS_REGEX = new RegExp(/(?<options>{.*})\n---\n(?<source>.*)/s);
