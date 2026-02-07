@@ -10,7 +10,7 @@ Under the hood it uses [abcjs](https://paulrosen.github.io/abcjs/) library and s
 
 ![Example music sheet](example.png)
 
-    ```music-abc
+    ```abc
     X:1
     T:The Legacy Jig
     M:6/8
@@ -25,7 +25,7 @@ Under the hood it uses [abcjs](https://paulrosen.github.io/abcjs/) library and s
 
 ### Chorus music
 
-    ```music-abc
+    ```abc
     X: 1
     T: Chorus
     V: T1 clef=treble name="Soprano"
@@ -47,7 +47,7 @@ You can pass custom options to the `renderAbc` function by adding a JSON string 
 
 ![Custom options example music sheet with tablatures](example_tablatures.jpg)
 
-    ```music-abc
+    ```abc
     {
       "tablature": [{"instrument": "violin"}]
     }
@@ -63,7 +63,7 @@ You can pass custom options to the `renderAbc` function by adding a JSON string 
 
 ### Add Swing to your 4/4 Tunes
 
-```music-abc
+```abc
 {"swing": 70}
 ---
 X:1
