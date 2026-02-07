@@ -60,6 +60,7 @@ You can pass custom options to the `renderAbc` function by adding a JSON string 
     K: G
     |:D2|EB{c}BA B2 EB|~B2 AB dBAG|FDAD BDAD|FDAD dAFD|
     ```
+
 ### Add Swing to your 4/4 Tunes
 
 ```music-abc
@@ -83,7 +84,7 @@ G,,4 _G,,4|F,,4 E,,4|_E,,4 D,,4|G,,4 z4 |G,,4 _G,,2 zE,,|F,,4 E,,4|_E,,4 D,,4|G,
 %%MIDI channel 10
 B,,2 B,,B,, B,,2 B,,B,,|B,,2 B,,B,, B,,2 B,,B,,|B,,2 B,,B,, B,,2 B,,B,,|B,,2 B,,B,, B,,2 B,,B,,|B,,2 B,,B,, B,,2 B,,B,,|B,,2 B,,B,, B,,2 B,,B,,|B,,2 B,,B,, B,,2 B,,B,,|^D,^D,^D,^D,^D,^D,^D,^D,:| ^D,2  ^D,^D,  ^D,2  ^D,^D,| ^D,4
 ```
-   
+
 When the JSON is invalid, the plugin will still try to render the music block but shows a big red banner at the top with the error so you can't miss it.
 
 For a full reference of all options you can use, have a look at the [official abcjs documentation](https://paulrosen.github.io/abcjs/visual/render-abc-options.html).
@@ -93,13 +94,13 @@ For a full reference of all options you can use, have a look at the [official ab
 The plugin is maintained by the [abcjs-music](https://github.com/abcjs-music) organization of volunteers, including Til Blechschmidt, the original author.
 If you have any feedback, please feel free to open an issue. If you know your way around source code, please consider making a pull request. All contributions are welcome.
 
-# Development
+## Development
 
 - clone the repository
 - `npm i` to install all the dependencies
 - `npm run build` to compile
 - copy main.js, manifest.json, and styles.css into your plugin directory (`.obsidian/plugins/<plugin-name>`)
 
-# License
+## License
 
 Copyright (C) 2025  ABCJS Organization <https://github.com/abcjs-music>
