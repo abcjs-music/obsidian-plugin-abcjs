@@ -14,16 +14,16 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "24.0.0",
-    "@typescript-eslint/eslint-plugin": "8.54.0",
-    "@typescript-eslint/parser": "8.54.0",
-    "builtin-modules": "5.0.0",
-    "esbuild": "^0.27.3",
+    "@types/node": "^24.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "builtin-modules": "^5.0.0",
+    "esbuild": "^0.28.0",
     "obsidian": "latest",
     "tslib": "2.8.1",
-    "typescript": "5.9.3"
+    "typescript": "^6.0.0"
   },
   "dependencies": {
-    "abcjs": "6.6.2"
+    "abcjs": "6.6.3"
   }
 }
