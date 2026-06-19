@@ -15,7 +15,7 @@ export default class MusicPlugin extends Plugin {
 	}
 
 	onunload() {
-		document.getElementById(PLAYBACK_CONTROLS_ID).remove();
+		document.getElementById(PLAYBACK_CONTROLS_ID)?.remove();
 	}
 
 	async codeProcessor(source: string, el: HTMLElement, ctx: MarkdownPostProcessorContext) {

@@ -23,7 +23,7 @@ export class NoteHighlighter implements CursorControl {
     if (event.measureStart && event.left === null) return;
     // Select the currently selected notes.
     rmNoteHighlights(this.el)();
-    event.elements.flat().forEach(el => el.classList.add("abcjs-highlight"));
+    event.elements?.flat().forEach((el: HTMLElement) => el.classList.add("abcjs-highlight"));
   }
 }
 
@@ -31,7 +31,7 @@ export class NoteHighlighter implements CursorControl {
 
 // -------------------------------------------------------------- 2nd order fn library: Visualization
 // outline region when playing
-export const togglePlayingHighlight = (el: HTMLElement) => (is: boolean) => el.parentElement.classList.toggle('is-playing', is);
+export const togglePlayingHighlight = (el: HTMLElement) => (is: boolean) => el.parentElement?.classList.toggle('is-playing', is);
 
 // clear all the note highlights
 export const rmNoteHighlights = (parentEl: HTMLElement) => () => {

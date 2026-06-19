@@ -53,9 +53,9 @@ export class PlaybackElement extends MarkdownRenderChild {
     const optionsMatch = this.markdownSource.match(OPTIONS_REGEX);
     let source = this.markdownSource; // can be modified, removes the options portion.
     if (optionsMatch !== null) {
-      source = optionsMatch.groups["source"];
+      source = optionsMatch.groups!["source"];
       try {
-        userOptions = JSON.parse(optionsMatch.groups["options"]);
+        userOptions = JSON.parse(optionsMatch.groups!["options"]);
       } catch (e) {
         console.error(e);
         this.renderError(`<strong>Failed to parse user-options</strong>
