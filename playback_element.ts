@@ -58,19 +58,21 @@ export class PlaybackElement extends MarkdownRenderChild {
         userOptions = JSON.parse(optionsMatch.groups!["options"]);
       } catch (e) {
         console.error(e);
-        this.renderError(`<strong>Failed to parse user-options</strong>
-	${e}`);
+        this.renderError('Failed to parse user-options', e);
       }
     }
 
     return { userOptions, source };
   }
 
-  renderError(error?: string) {
-    if (error == null) return;
+  renderError(message?: string, detail?: unknown) {
+    if (message == null) return;
     const errorNode = document.createElement('div');
-    errorNode.innerHTML = error;
     errorNode.addClass("obsidian-plugin-abcjs-error");
+    errorNode.createEl('strong', { text: message });
+    if (detail != null) {
+      errorNode.appendText(` ${detail}`);
+    }
     this.el.appendChild(errorNode);
   }
 
