@@ -67,7 +67,7 @@ export class PlaybackElement extends MarkdownRenderChild {
 
   renderError(message?: string, detail?: unknown) {
     if (message == null) return;
-    const errorNode = document.createElement('div');
+    const errorNode = activeDocument.createElement('div');
     errorNode.addClass("obsidian-plugin-abcjs-error");
     errorNode.createEl('strong', { text: message });
     if (detail != null) {

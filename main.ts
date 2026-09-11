@@ -8,14 +8,14 @@ export default class MusicPlugin extends Plugin {
 		this.registerMarkdownCodeBlockProcessor('music-abc', this.codeProcessor);
 
 		// Although unused by us, a valid DOM element is needed to create a SynthController
-		const unusedPlaybackControls = document.createElement('aside');
+		const unusedPlaybackControls = activeDocument.createElement('aside');
 		unusedPlaybackControls.id = PLAYBACK_CONTROLS_ID;
 		unusedPlaybackControls.style.display = 'none';
-		document.body.appendChild(unusedPlaybackControls);
+		activeDocument.body.appendChild(unusedPlaybackControls);
 	}
 
 	onunload() {
-		document.getElementById(PLAYBACK_CONTROLS_ID)?.remove();
+		activeDocument.getElementById(PLAYBACK_CONTROLS_ID)?.remove();
 	}
 
 	async codeProcessor(source: string, el: HTMLElement, ctx: MarkdownPostProcessorContext) {
