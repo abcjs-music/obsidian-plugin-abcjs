@@ -24,6 +24,6 @@
     "typescript": "^6.0.0"
   },
   "dependencies": {
-    "abcjs": "6.6.3"
+    "abcjs": "6.7.0"
   }
 }
