@@ -1,6 +1,8 @@
-# Obsidian ABC.JS plugin
+# obsidian-plugin-music-code-blocks
 
-Obsidian plugin which renders ABC music notation from code blocks using the `abc` language specifier.
+Obsidian ABC.JS plugin,
+
+renders ABC music notation from code blocks using the `abc` language specifier.
 
 Under the hood it uses [abcjs](https://paulrosen.github.io/abcjs/) library and supports all the features that abcjs provides.
 
